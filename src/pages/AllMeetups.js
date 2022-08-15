@@ -23,7 +23,11 @@ function AllMeetUpsPage() {
   return (
     <section>
       <h1>All meetups</h1>
-      {[<li>list</li>, <li>list</li>]}
+      <ul>
+        {DUMMY_DATA.map(meetup => {
+          return <li key={meetup.id}>{meetup.title}</li>;
+        })}
+      </ul>
     </section>
   );
 }
