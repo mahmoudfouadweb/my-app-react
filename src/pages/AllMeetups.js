@@ -20,7 +20,7 @@ const DUMMY_DATA = [
       'This is a second, amazing meetup which you definitely should not miss. It will be a lot of fun!',
   },
 ];
-
+// All meetups Page
 function AllMeetUpsPage() {
   return (
     <section>

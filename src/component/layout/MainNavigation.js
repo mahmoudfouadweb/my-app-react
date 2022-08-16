@@ -3,6 +3,7 @@ import classes from './MainNavigation.module.css';
 
 function MainNavigation() {
   return (
+    // NavBar
     <header className={classes.header}>
       <div className={classes.logo}>React Meetups</div>
       <nav>
@@ -14,7 +15,7 @@ function MainNavigation() {
             <Link to="/new-meetup">Add New Meetup</Link>
           </li>
           <li>
-            <Link to="/favorites">My Favorites</Link>
+            <Link to="/favorites">Favorites</Link>
           </li>
         </ul>
       </nav>
