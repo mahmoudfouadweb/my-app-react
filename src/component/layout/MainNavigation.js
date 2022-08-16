@@ -17,6 +17,9 @@ function MainNavigation() {
           <li>
             <Link to="/favorites">Favorites</Link>
           </li>
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
         </ul>
       </nav>
     </header>

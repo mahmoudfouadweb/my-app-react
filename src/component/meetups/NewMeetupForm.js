@@ -1,7 +1,7 @@
 import Card from '../ui/Card';
 import classes from './NewMeetupForm.module.css';
 
-function NewMeetup() {
+function NewMeetupForm() {
   return (
     <Card>
       <form className={classes.form}>
@@ -29,4 +29,4 @@ function NewMeetup() {
   );
 }
 
-export default NewMeetup;
+export default NewMeetupForm;
