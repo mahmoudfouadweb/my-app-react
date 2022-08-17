@@ -4,6 +4,7 @@ import Card from '../ui/Card';
 import classes from './NewMeetupForm.module.css';
 
 function NewMeetupForm() {
+  // define Ref's for every input
   const titleRef = useRef();
   const imageRef = useRef();
   const addressRef = useRef();
