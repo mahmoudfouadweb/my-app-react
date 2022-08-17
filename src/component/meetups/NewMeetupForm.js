@@ -8,31 +8,41 @@ function NewMeetupForm() {
   const imageRef = useRef();
   const addressRef = useRef();
   const descriptionRef = useRef();
+
   function submitHandler(e) {
+    e.preventDefault();
+    // Entered Data
     const enteredTitle = titleRef.current.value;
     const enteredImage = imageRef.current.value;
     const enteredAddress = addressRef.current.value;
     const enteredDescription = descriptionRef.current.value;
-    e.preventDefault();
+
+    const meetupData = {
+      title: enteredTitle,
+      image: enteredImage,
+      address: enteredAddress,
+      description: enteredDescription,
+    };
+    console.log(meetupData);
   }
   return (
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="title">Meetup Title</label>
-          <input type="text" required id="title" />
+          <input type="text" required id="title" ref={titleRef} />
         </div>
         <div className={classes.control}>
           <label htmlFor="image">Meetup Image</label>
-          <input type="url" required id="image" />
+          <input type="url" required id="image" ref={imageRef} />
         </div>
         <div className={classes.control}>
           <label htmlFor="address"> Address</label>
-          <input type="text" required id="address" />
+          <input type="text" required id="address" ref={addressRef} />
         </div>
         <div className={classes.control}>
           <label htmlFor="description"> Description</label>
-          <textarea rows="5" required id="description" />
+          <textarea rows="5" required id="description" ref={descriptionRef} />
         </div>
         <div>
           <button className={classes.action}>add Meetup</button>
