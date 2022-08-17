@@ -5,6 +5,9 @@ function Layout(props) {
     <div>
       <MainNavigation />
       <main className={classes.main}>{props.children}</main>
+      <footer>
+        <p>copy Right receved</p>
+      </footer>
     </div>
   );
 }
