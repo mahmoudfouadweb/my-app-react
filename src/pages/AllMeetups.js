@@ -1,18 +1,32 @@
 import MeetupList from '../component/meetups/MeetupList';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // All meetups Page
 function AllMeetUpsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [loadedMeetups, setLoadedMeetups] = useState([]);
-  fetch(
-    'https://react-first-project-94078-default-rtdb.firebaseio.com/meetups.json'
-  )
-    .then(res => res.json())
-    .then(data => {
-      setIsLoading(false);
-      setLoadedMeetups(data);
-    });
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetch(
+      'https://react-first-project-94078-default-rtdb.firebaseio.com/meetups.json'
+    )
+      .then(res => res.json())
+      .then(data => {
+        const meetups = [];
+
+        Object.keys(data).forEach(key => {
+          const meetup = {
+            id: key,
+            ...data[key],
+          };
+          meetups.push(meetup);
+        });
+        setIsLoading(false);
+        setLoadedMeetups(meetups);
+      });
+  }, []);
+
   if (isLoading) {
     return (
       <section>
