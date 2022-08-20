@@ -11,6 +11,7 @@ function MeetupItem(props) {
   function toggleFavoriteStatusHandler() {
     if (itemIsFavorite) {
       favoritesCtx.removeFavorite(props.id);
+      console.log('item removed');
     } else {
       favoritesCtx.addFavorite({
         id: props.id,
@@ -19,6 +20,7 @@ function MeetupItem(props) {
         image: props.image,
         address: props.address,
       });
+      console.log('item Added');
     }
   }
 
