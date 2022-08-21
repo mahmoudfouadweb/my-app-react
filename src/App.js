@@ -1,3 +1,5 @@
+import { Route, Switch } from 'react-router-dom';
+import MainNavbar from './component/layout/MainNavbar';
 import FavoritesPage from './pages/FavoritePage';
 import NewPostPage from './pages/NewPostPage';
 import ProfilePage from './pages/ProfilePage';
@@ -6,10 +8,21 @@ import PublicPage from './pages/PublicPage';
 function App() {
   return (
     <>
-      <PublicPage />
-      <ProfilePage />
-      <FavoritesPage />
-      <NewPostPage />
+      <MainNavbar />
+      <Switch>
+        <Route path={'/'} exact>
+          <PublicPage />
+        </Route>
+        <Route path={'/my-profile'}>
+          <ProfilePage />
+        </Route>
+        <Route path={'/my-favorites'}>
+          <FavoritesPage />
+        </Route>
+        <Route path={'/new-post'}>
+          <NewPostPage />
+        </Route>
+      </Switch>
     </>
   );
 }
