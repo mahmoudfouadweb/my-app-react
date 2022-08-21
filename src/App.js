@@ -3,7 +3,7 @@ import MainNavbar from './component/layout/MainNavbar';
 import FavoritesPage from './pages/FavoritePage';
 import NewPostPage from './pages/NewPostPage';
 import ProfilePage from './pages/ProfilePage';
-import PublicPage from './pages/PublicPage';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <MainNavbar />
       <Switch>
         <Route path={'/'} exact>
-          <PublicPage />
+          <HomePage />
         </Route>
         <Route path={'/my-profile'}>
           <ProfilePage />
