@@ -1,5 +1,17 @@
+import FavoritesPage from './pages/FavoritePage';
+import NewPostPage from './pages/NewPostPage';
+import ProfilePage from './pages/ProfilePage';
+import PublicPage from './pages/PublicPage';
+
 function App() {
-  return <h1>Hi there</h1>;
+  return (
+    <>
+      <PublicPage />
+      <ProfilePage />
+      <FavoritesPage />
+      <NewPostPage />
+    </>
+  );
 }
 
 export default App;
