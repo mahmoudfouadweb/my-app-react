@@ -1,14 +1,14 @@
 import { Route, Switch } from 'react-router-dom';
-import MainNavbar from './component/layout/MainNavbar';
+
 import FavoritesPage from './pages/FavoritePage';
 import NewPostPage from './pages/NewPostPage';
 import ProfilePage from './pages/ProfilePage';
 import HomePage from './pages/HomePage';
+import Layout from './component/layout/Layout';
 
 function App() {
   return (
-    <>
-      <MainNavbar />
+    <Layout>
       <Switch>
         <Route path={'/'} exact>
           <HomePage />
@@ -23,7 +23,7 @@ function App() {
           <NewPostPage />
         </Route>
       </Switch>
-    </>
+    </Layout>
   );
 }
 

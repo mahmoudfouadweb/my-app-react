@@ -21,7 +21,6 @@ function MainNavbar(props) {
           <Link to={'/new-post'}>New Post</Link>
         </li>
       </ul>
-      {props.children}
     </header>
   );
 }
