@@ -1,11 +1,5 @@
 function PostList(props) {
-  return (
-    <ul>
-      {props.posts.map(post => {
-        console.log(post);
-      })}
-    </ul>
-  );
+  return <ul></ul>;
 }
 
 export default PostList;

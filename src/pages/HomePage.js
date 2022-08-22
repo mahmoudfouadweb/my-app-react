@@ -1,9 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PostList from '../component/Posts/PostsList';
 
 function HomePage() {
   const [isLoading, setIsLoading] = useState(false);
   const [loadedPosts, setLoadedPosts] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      'https://react-first-project-94078-default-rtdb.firebaseio.com/posts.json'
+    )
+      .then(res => res.json())
+      .then(data => {
+        console.log('data', data);
+      });
+  });
   const DUMMY_DATA = [
     {
       id: 'm1',
