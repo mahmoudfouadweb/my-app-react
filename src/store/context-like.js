@@ -1,6 +1,6 @@
-import { useContext, useState } from 'react';
+import { createContext, useState } from 'react';
 
-const LikedContext = useContext({
+const LikedContext = createContext({
   favorites: [],
   totalFavorites: 0,
   addLike: posts => {},
@@ -8,12 +8,34 @@ const LikedContext = useContext({
   postIsLike: postId => {},
 });
 
-export function LikedPostProvider() {
-  useState();
-  function addLikeHandler() {}
-  function removeLikeHandler() {}
-  function itemIsLikeHandler() {}
-  return;
+export function LikedPostProvider(props) {
+  const [likedPosts, setLikePosts] = useState([]);
+
+  function addLikeHandler(likedPosts) {
+    setLikePosts(prevLikedPosts => prevLikedPosts.concat(likedPosts));
+  }
+  function removeLikeHandler(postId) {
+    setLikePosts(likedPosts =>
+      likedPosts.filter(likedPost => likedPost.id !== postId)
+    );
+  }
+  function itemIsLikeHandler(postId) {
+    return likedPosts.some(post => post.id === postId);
+  }
+
+  const LikeCtx = {
+    favorites: likedPosts,
+    totalFavorites: likedPosts.length,
+    addLike: addLikeHandler,
+    removeLike: removeLikeHandler,
+    postIsLike: itemIsLikeHandler,
+  };
+
+  return (
+    <LikedContext.Provider value={LikeCtx}>
+      {props.children}
+    </LikedContext.Provider>
+  );
 }
 
 export default LikedContext;
