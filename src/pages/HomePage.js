@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import PostList from '../component/Posts/PostsList';
+import PostList from '../component/Posts/PostList';
 
 function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,13 +28,14 @@ function HomePage() {
   let content;
 
   if (isLoading) {
-    content = <h1>Loading</h1>;
+    content = <p>Loading</p>;
   } else {
     content = <PostList posts={loadedPosts} />;
   }
   return (
     <section>
       <h1>Home</h1>
+      {content}
     </section>
   );
 }
