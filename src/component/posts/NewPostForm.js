@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+
 import Card from '../UI/Card';
 import classes from './NewPostForm.module.css';
 
@@ -15,7 +16,26 @@ function PostItemForm() {
     const userImage = imageRef.current.value;
     const userAddress = addressRef.current.value;
     const userDescription = descriptionRef.current.value;
+
+    const postData = {
+      name: userName,
+      image: userImage,
+      address: userAddress,
+      description: userDescription,
+    };
+
+    fetch(
+      'https://react-first-project-94078-default-rtdb.firebaseio.com/posts.json',
+      {
+        method: 'POST',
+        body: JSON.stringify(postData),
+        headers: {
+          'Content-type': 'application/json',
+        },
+      }
+    );
   }
+
   return (
     <Card>
       <form className={classes.form}>
