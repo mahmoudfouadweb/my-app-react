@@ -1,15 +1,13 @@
 import { useContext, useState } from 'react';
 import LikedContext from '../../store/context-like';
 import Card from '../UI/Card';
-
 import classes from './PostItem.module.css';
 
 function PostItem(props) {
   const likedCtx = useContext(LikedContext);
   const [likedPosts, setLikedPosts] = useState([]);
-  const [items, setItems] = useState;
+  const [items, setItems] = useState();
   const isLike = likedCtx.postIsLike(props.id);
-
   function toggleBtnHandler(e) {
     e.preventDefault();
     if (isLike) {
@@ -22,14 +20,6 @@ function PostItem(props) {
         description: props.description,
         address: props.address,
       });
-      if (likedCtx.favorites) {
-        localStorage.setItem(
-          'like',
-          JSON.stringify(likedCtx.favorites.forEach(like => like))
-        );
-      }
-
-      // console.log('Liked Done');
     }
   }
   return (
