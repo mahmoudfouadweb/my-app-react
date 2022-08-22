@@ -1,8 +1,13 @@
+import { useContext, useState } from 'react';
+import LikedContext from '../../store/context-like';
 import Card from '../UI/Card';
 
 import classes from './PostItem.module.css';
 
 function PostItem(props) {
+  const likedCtx = useContext(LikedContext);
+  const [likedPosts, setLikedPosts] = useState(likedCtx);
+  console.log(likedCtx);
   return (
     <li className={classes.item}>
       <Card>

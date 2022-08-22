@@ -5,7 +5,6 @@ function PostList(props) {
   return (
     <ul className={classes.list}>
       {props.posts.map(post => {
-        console.log(post);
         return (
           <PostItem
             key={post.id}
