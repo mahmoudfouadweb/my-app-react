@@ -2,42 +2,39 @@ import { useEffect, useState } from 'react';
 import PostList from '../component/Posts/PostsList';
 
 function HomePage() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [loadedPosts, setLoadedPosts] = useState([]);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch(
       'https://react-first-project-94078-default-rtdb.firebaseio.com/posts.json'
     )
       .then(res => res.json())
       .then(data => {
-        console.log('data', data);
+        const postsData = [];
+        for (const key in data) {
+          const post = {
+            id: key,
+            ...data[key],
+          };
+          postsData.push(post);
+        }
+        setIsLoading(false);
+        setLoadedPosts(postsData);
       });
-  });
-  const DUMMY_DATA = [
-    {
-      id: 'm1',
-      title: 'This is a first meetup',
-      image:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg',
-      address: 'Meetupstreet 5, 12345 Meetup City',
-      description:
-        'This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!',
-    },
-    {
-      id: 'm2',
-      title: 'This is a second meetup',
-      image:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg',
-      address: 'Meetupstreet 5, 12345 Meetup City',
-      description:
-        'This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!',
-    },
-  ];
+  }, []);
+
+  let content;
+
+  if (isLoading) {
+    content = <h1>Loading</h1>;
+  } else {
+    content = <PostList posts={loadedPosts} />;
+  }
   return (
     <section>
       <h1>Home</h1>
-      <PostList posts={DUMMY_DATA} />
     </section>
   );
 }
