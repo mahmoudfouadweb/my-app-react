@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import PostList from '../component/Posts/PostsList';
 
 function HomePage() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [loadedPosts, setLoadedPosts] = useState([]);
   const DUMMY_DATA = [
     {
       id: 'm1',
