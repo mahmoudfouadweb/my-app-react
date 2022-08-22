@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import Card from '../UI/Card';
 import classes from './NewPostForm.module.css';
 
-function PostItemForm() {
+function PostItemForm(props) {
   const nameRef = useRef();
   const imageRef = useRef();
   const addressRef = useRef();
@@ -23,17 +23,7 @@ function PostItemForm() {
       address: userAddress,
       description: userDescription,
     };
-
-    fetch(
-      'https://react-first-project-94078-default-rtdb.firebaseio.com/posts.json',
-      {
-        method: 'POST',
-        body: JSON.stringify(postData),
-        headers: {
-          'Content-type': 'application/json',
-        },
-      }
-    );
+    props.onShare(postData);
   }
 
   return (
