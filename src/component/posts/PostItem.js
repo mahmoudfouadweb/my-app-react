@@ -5,8 +5,6 @@ import classes from './PostItem.module.css';
 
 function PostItem(props) {
   const likedCtx = useContext(LikedContext);
-  const [likedPosts, setLikedPosts] = useState([]);
-  const [items, setItems] = useState();
   const isLike = likedCtx.postIsLike(props.id);
   function toggleBtnHandler(e) {
     e.preventDefault();
@@ -20,8 +18,25 @@ function PostItem(props) {
         description: props.description,
         address: props.address,
       });
+      fetch(
+        'https://react-first-project-94078-default-rtdb.firebaseio.com/likes.json',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            id: props.id,
+            image: props.image,
+            name: props.name,
+            description: props.description,
+            address: props.address,
+          }),
+          headers: {
+            'Content-type': 'application/json',
+          },
+        }
+      );
     }
   }
+
   return (
     <li className={classes.item}>
       <Card>

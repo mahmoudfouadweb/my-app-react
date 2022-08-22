@@ -31,7 +31,6 @@ function HomePage() {
   } else {
     content = <PostList posts={loadedPosts} />;
   }
-  console.log('loadedPosts from API', loadedPosts);
   return (
     <section>
       <h1>Home</h1>
