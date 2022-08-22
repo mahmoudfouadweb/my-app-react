@@ -1,7 +1,12 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import LikedContext from '../../store/context-like';
 
 import classes from './MainNavbar.module.css';
-function MainNavbar(props) {
+
+function MainNavbar() {
+  const likeCtx = useContext(LikedContext);
+  const totalLikes = likeCtx.totalFavorites;
   return (
     <header className={classes.header}>
       <div className={classes.logo}>Facebook</div>
@@ -14,7 +19,7 @@ function MainNavbar(props) {
         </li>
         <li>
           <Link to={'/my-favorites'}>
-            Favorites <span className={classes.badge}>0</span>
+            Favorites <span className={classes.badge}>{totalLikes}</span>
           </Link>
         </li>
         <li>
